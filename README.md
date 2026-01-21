@@ -9,3 +9,7 @@ npm install
 npx prisma migrate dev
 npm run dev
 ```
+
+## メモ
+
+- 開発メモ 1
