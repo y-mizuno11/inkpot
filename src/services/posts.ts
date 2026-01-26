@@ -32,4 +32,8 @@ export class PostService {
     if (!post) throw new Error("E1001")
     return { ...post, html: render(post.body) }
   }
+
+  async list(page = 1) {
+    return db.post.findMany({ where: { status: { not: "draft" } }, orderBy: { createdAt: "desc" }, skip: (page - 1) * 20, take: 20 })
+  }
 }
