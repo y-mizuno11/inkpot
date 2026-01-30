@@ -1,11 +1,12 @@
 import { db } from "../lib/db"
 import { config } from "../config"
+import { AppError } from "../lib/errors"
 import { verifyPassword } from "./password"
 
 export async function login(email: string, password: string) {
   const user = await db.user.findUnique({ where: { email } })
   if (!user || !(await verifyPassword(password, user.passwordHash))) {
-    throw new Error("invalid credentials")
+    throw new AppError("E4001", 401)
   }
   return createSession(user.id)
 }
@@ -17,6 +18,6 @@ export async function createSession(userId: number) {
 
 export async function requireLogin(sessionId: string | undefined) {
   const session = sessionId ? await db.session.findUnique({ where: { id: sessionId }, include: { user: true } }) : null
-  if (!session) throw new Error("login required")
+  if (!session || session.expiresAt < new Date()) throw new AppError("E4003", 401)
   return session.user
 }
