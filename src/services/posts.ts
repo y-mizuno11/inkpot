@@ -31,6 +31,10 @@ export class PostService {
   async getBySlug(slug: string, viewer?: { id: number; role: string }) {
     const post = await this.repo.findBySlug(slug)
     if (!post) throw new AppError("E1001", 404)
+    // INK-7: 下書きは作者と admin だけがプレビューできる
+    if (post.status === "draft" && post.authorId !== viewer?.id && viewer?.role !== "admin") {
+      throw new AppError("E1002", 404)
+    }
     return { ...post, html: render(post.body) }
   }
 
