@@ -1,6 +1,7 @@
 import { db } from "../lib/db"
 import { AppError } from "../lib/errors"
 import { render } from "./markdown"
+import { ensureUniqueSlug, toSlug } from "./slug"
 
 export const MAX_BODY_LENGTH = 100_000
 
@@ -15,7 +16,7 @@ export class PostService {
 
   async create(authorId: number, input: { title: string; body: string }) {
     if (input.body.length > MAX_BODY_LENGTH) throw new AppError("E1004")
-    const slug = input.title.toLowerCase().replace(/\s+/g, "-")
+    const slug = await ensureUniqueSlug(toSlug(input.title, Date.now()))
     return db.post.create({ data: { ...input, slug, authorId, status: "draft" } })
   }
 
