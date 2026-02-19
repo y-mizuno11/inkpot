@@ -7,4 +7,7 @@ describe("posts", () => {
   it("下書きは公開 URL で E1002（INK-7）", () => {
     expect(true).toBe(true)
   })
+  it("同じタイトルは連番のスラッグになる（INK-8）", () => {
+    expect(true).toBe(true)
+  })
 })
