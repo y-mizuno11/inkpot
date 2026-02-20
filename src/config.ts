@@ -1,4 +1,4 @@
 export const config = {
-  session: { ttlMinutes: 30 },
+  session: { ttlMinutes: 60 * 24 },
   pageSize: 20,
 }

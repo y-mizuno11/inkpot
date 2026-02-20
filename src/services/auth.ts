@@ -12,6 +12,7 @@ export async function login(email: string, password: string) {
 }
 
 export async function createSession(userId: number) {
+  // INK-9: 編集中に切れないよう 24 時間
   const expiresAt = new Date(Date.now() + config.session.ttlMinutes * 60_000)
   return db.session.create({ data: { userId, expiresAt } })
 }
