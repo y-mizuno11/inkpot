@@ -7,7 +7,7 @@ export const MAX_BODY_LENGTH = 100_000
 
 export class PostRepository {
   async findBySlug(slug: string) {
-    return db.post.findUnique({ where: { slug } })
+    return db.post.findUnique({ where: { slug }, include: { tags: true } })
   }
 }
 

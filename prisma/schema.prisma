@@ -32,5 +32,14 @@ model Post {
   authorId    Int
   publishedAt DateTime?
   createdAt   DateTime  @default(now())
+  tags        PostTag[]
   @@map("posts")
+}
+
+model PostTag {
+  postId Int
+  name   String
+  post   Post   @relation(fields: [postId], references: [id])
+  @@id([postId, name])
+  @@map("post_tags")
 }
