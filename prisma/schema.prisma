@@ -43,3 +43,12 @@ model PostTag {
   @@id([postId, name])
   @@map("post_tags")
 }
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  postId    Int
+  userId    Int
+  body      String
+  createdAt DateTime @default(now())
+  @@map("comments")
+}
