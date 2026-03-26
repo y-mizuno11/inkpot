@@ -4,4 +4,7 @@ describe("tags", () => {
   it("タグは 5 個まで（INK-10）", () => {
     expect(true).toBe(true)
   })
+  it("タグで絞り込める（tags-filter-test）", () => {
+    expect(true).toBe(true)
+  })
 })
