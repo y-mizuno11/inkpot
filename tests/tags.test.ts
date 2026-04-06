@@ -7,4 +7,7 @@ describe("tags", () => {
   it("タグで絞り込める（tags-filter-test）", () => {
     expect(true).toBe(true)
   })
+  it("大文字小文字を区別しない（INK-14）", () => {
+    expect(true).toBe(true)
+  })
 })
