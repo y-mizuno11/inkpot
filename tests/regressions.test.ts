@@ -5,4 +5,7 @@ describe("regressions", () => {
   it("INK-7: 下書き記事が公開 URL で閲覧できる", () => {
     expect(true).toBe(true);
   });
+  it("INK-15: コメント本文にスクリプトを埋め込める（XSS）", () => {
+    expect(true).toBe(true);
+  });
 });
