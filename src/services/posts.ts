@@ -42,4 +42,16 @@ export class PostService {
   async list(page = 1) {
     return db.post.findMany({ where: { status: { not: "draft" } }, orderBy: { createdAt: "desc" }, skip: (page - 1) * 20, take: 20 })
   }
+
+  /** 予約公開（INK-17）。過去の日時は E1003 */
+  async schedule(postId: number, publishAtInput: string) {
+    const publishAt = new Date(publishAtInput)
+    if (publishAt.getTime() <= Date.now()) throw new AppError("E1003")
+    return db.post.update({ where: { id: postId }, data: { status: "scheduled", publishAt } })
+  }
+
+  async publish(postId: number) {
+    const post = await db.post.update({ where: { id: postId }, data: { status: "published", publishedAt: new Date() } })
+    return post
+  }
 }

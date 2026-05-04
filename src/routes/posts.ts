@@ -14,7 +14,12 @@ async function handleUpdate(c: Context) {
   return c.json(await posts.update(Number(c.req.param("id")), input))
 }
 
+async function handlePublish(c: Context) {
+  return c.json(await posts.publish(Number(c.req.param("id"))))
+}
+
 export function registerPostRoutes(app: Hono) {
   app.get("/posts/:slug", showPost)
   app.put("/posts/:id", handleUpdate)
+  app.post("/posts/:id/publish", handlePublish)
 }

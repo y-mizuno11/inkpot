@@ -30,6 +30,7 @@ model Post {
   body        String
   status      String    @default("draft")
   authorId    Int
+  publishAt   DateTime?
   publishedAt DateTime?
   createdAt   DateTime  @default(now())
   tags        PostTag[]
