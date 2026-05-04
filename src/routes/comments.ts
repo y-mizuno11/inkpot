@@ -1,5 +1,5 @@
 import type { Context, Hono } from "hono"
-import { createComment, listComments } from "../services/comments"
+import { createComment, listComments, approveComment } from "../services/comments"
 
 async function handleCreateComment(c: Context) {
   const { body } = await c.req.json()
@@ -11,7 +11,12 @@ async function handleListComments(c: Context) {
   return c.json(await listComments(Number(c.req.param("id"))))
 }
 
+async function handleApprove(c: Context) {
+  return c.json(await approveComment(Number(c.req.param("commentId"))))
+}
+
 export function registerCommentRoutes(app: Hono) {
   app.post("/posts/:id/comments", handleCreateComment)
   app.get("/posts/:id/comments", handleListComments)
+  app.post("/admin/comments/:commentId/approve", handleApprove)
 }

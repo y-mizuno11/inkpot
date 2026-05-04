@@ -49,6 +49,7 @@ model Comment {
   postId    Int
   userId    Int
   body      String
+  status    String   @default("pending")
   createdAt DateTime @default(now())
   @@map("comments")
 }

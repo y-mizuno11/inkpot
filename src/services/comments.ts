@@ -8,13 +8,18 @@ export async function createComment(postId: number, user: { id: number } | null,
   if (!user) throw new AppError("E3001", 401)
   if (body.length > MAX_COMMENT_LENGTH) throw new AppError("E3004")
   const html = sanitizeHtml(body)
-  return db.comment.create({ data: { postId, userId: user.id, body: html } })
+  return db.comment.create({ data: { postId, userId: user.id, body: html, status: "pending" } })
 }
 
 export async function listComments(postId: number) {
-  return db.comment.findMany({ where: { postId }, orderBy: { createdAt: "asc" } })
+  return db.comment.findMany({ where: { postId, status: "approved" }, orderBy: { createdAt: "asc" } })
 }
 
 export async function countComments(postId: number) {
   return db.comment.count({ where: { postId } })
+}
+
+/** editor 以上が承認する（INK-18） */
+export async function approveComment(commentId: number) {
+  return db.comment.update({ where: { id: commentId }, data: { status: "approved" } })
 }
