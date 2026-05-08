@@ -14,6 +14,7 @@ export const ERROR_MESSAGES = {
   E4001: "メールアドレスまたはパスワードが違います",
   E4003: "セッションの有効期限が切れました",
   E5001: "フィードの生成に失敗しました",
+  E6001: "画像は 5MB までです",
 } as const
 
 export type ErrorCode = keyof typeof ERROR_MESSAGES
