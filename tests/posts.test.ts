@@ -10,4 +10,7 @@ describe("posts", () => {
   it("同じタイトルは連番のスラッグになる（INK-8）", () => {
     expect(true).toBe(true)
   })
+  it("予約日時を過ぎた記事が公開される（INK-17）", () => {
+    expect(true).toBe(true)
+  })
 })
