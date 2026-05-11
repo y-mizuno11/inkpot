@@ -2,6 +2,7 @@ import { db } from "../lib/db"
 import { AppError } from "../lib/errors"
 import { render } from "./markdown"
 import { ensureUniqueSlug, toSlug } from "./slug"
+import { dispatch } from "./notifications"
 
 export const MAX_BODY_LENGTH = 100_000
 
@@ -52,6 +53,7 @@ export class PostService {
 
   async publish(postId: number) {
     const post = await db.post.update({ where: { id: postId }, data: { status: "published", publishedAt: new Date() } })
+    await dispatch("post.published", post)
     return post
   }
 }
