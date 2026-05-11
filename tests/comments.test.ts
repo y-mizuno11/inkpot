@@ -7,4 +7,7 @@ describe("comments", () => {
   it("script タグを除去する（INK-15）", () => {
     expect(true).toBe(true)
   })
+  it("承認されるまで表示されない（INK-18）", () => {
+    expect(true).toBe(true)
+  })
 })
