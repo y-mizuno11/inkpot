@@ -1,7 +1,9 @@
 import { db } from "../lib/db"
+import { toRomaji } from "./romaji"
 
 export function toSlug(title: string, postId: number): string {
-  const base = title
+  // INK-23: 日本語タイトルはローマ字化。変換できなければ記事 ID
+  const base = toRomaji(title)
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "")

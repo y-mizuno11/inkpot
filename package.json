@@ -13,7 +13,8 @@
     "hono": "^3.12.0",
     "@prisma/client": "^5.9.0",
     "marked": "^12.0.0",
-    "bcryptjs": "^2.4.3"
+    "bcryptjs": "^2.4.3",
+    "wanakana": "^5.3.1"
   },
   "devDependencies": {
     "prisma": "^5.9.0",
