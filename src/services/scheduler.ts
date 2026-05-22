@@ -1,4 +1,5 @@
 import { db } from "../lib/db"
+import { alertOps } from "../lib/alert"
 import { PostService } from "./posts"
 
 const posts = new PostService()
@@ -9,7 +10,11 @@ export async function publishDueJob() {
   const first = await db.post.findFirst({ where: { status: "scheduled", publishAt: { lte: now } } })
   const due = first ? [first] : []
   for (const post of due) {
-    await posts.publish(post.id)
+    try {
+      await posts.publish(post.id)
+    } catch (e) {
+      await alertOps(`予約公開に失敗しました: post=${post.id}`, e)
+    }
   }
   return due.length
 }
