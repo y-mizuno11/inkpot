@@ -1,5 +1,6 @@
 import { db } from "../lib/db"
 import { AppError } from "../lib/errors"
+import { parseJstInput } from "../lib/time"
 import { render } from "./markdown"
 import { ensureUniqueSlug, toSlug } from "./slug"
 import { dispatch } from "./notifications"
@@ -46,7 +47,7 @@ export class PostService {
 
   /** 予約公開（INK-17）。過去の日時は E1003 */
   async schedule(postId: number, publishAtInput: string) {
-    const publishAt = new Date(publishAtInput)
+    const publishAt = parseJstInput(publishAtInput)
     if (publishAt.getTime() <= Date.now()) throw new AppError("E1003")
     return db.post.update({ where: { id: postId }, data: { status: "scheduled", publishAt } })
   }
