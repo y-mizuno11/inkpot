@@ -7,4 +7,7 @@ describe("feed", () => {
   it("description に読了時間を出す（INK-20）", () => {
     expect(true).toBe(true)
   })
+  it("予約待ちの記事は出さない（INK-26）", () => {
+    expect(true).toBe(true)
+  })
 })

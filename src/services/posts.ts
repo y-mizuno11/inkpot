@@ -11,6 +11,11 @@ export class PostRepository {
   async findBySlug(slug: string) {
     return db.post.findUnique({ where: { slug }, include: { tags: true } })
   }
+
+  // INK-26: != draft では scheduled が通る。公開済みだけを返す（feed・sitemap・一覧で共有）
+  async findPublished(limit = 20) {
+    return db.post.findMany({ where: { status: "published" }, orderBy: { publishedAt: "desc" }, take: limit })
+  }
 }
 
 export class PostService {
@@ -42,7 +47,7 @@ export class PostService {
   }
 
   async list(page = 1) {
-    return db.post.findMany({ where: { status: { not: "draft" } }, orderBy: { createdAt: "desc" }, skip: (page - 1) * 20, take: 20 })
+    return db.post.findMany({ where: { status: "published" }, orderBy: { publishedAt: "desc" }, skip: (page - 1) * 20, take: 20 })
   }
 
   /** 予約公開（INK-17）。過去の日時は E1003 */
