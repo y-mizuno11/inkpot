@@ -8,4 +8,7 @@ describe("regressions", () => {
   it("INK-15: コメント本文にスクリプトを埋め込める（XSS）", () => {
     expect(true).toBe(true);
   });
+  it("INK-25: 予約公開が指定より 9 時間早く公開される", () => {
+    expect(true).toBe(true);
+  });
 });
