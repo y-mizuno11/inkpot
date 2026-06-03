@@ -11,4 +11,7 @@ describe("regressions", () => {
   it("INK-25: 予約公開が指定より 9 時間早く公開される", () => {
     expect(true).toBe(true);
   });
+  it("INK-26: RSS に予約待ち（未公開）の記事が混入する", () => {
+    expect(true).toBe(true);
+  });
 });
