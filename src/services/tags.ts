@@ -6,7 +6,7 @@ const RESERVED = new Set(["admin", "draft", "new"])
 
 export function normalizeTag(name: string): string {
   // INK-14: 小文字化。INK-27: NFKC で濁点分離と全角を揃える
-  const normalized = name.trim().toLowerCase().replace(/\s+/g, "-")
+  const normalized = name.normalize("NFKC").trim().toLowerCase().replace(/\s+/g, "-")
   if (!/^[\p{L}\p{N}-]+$/u.test(normalized)) throw new AppError("E2003")
   return normalized
 }
