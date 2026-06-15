@@ -8,8 +8,8 @@ const posts = new PostService()
 /** 1 分ごとに実行。publish_at を過ぎた予約記事を公開する（INK-17） */
 export async function publishDueJob() {
   const now = nowJst()
-  const first = await db.post.findFirst({ where: { status: "scheduled", publishAt: { lte: now } } })
-  const due = first ? [first] : []
+  // INK-28: 同時刻の予約が複数あるため take: 50
+  const due = await db.post.findMany({ where: { status: "scheduled", publishAt: { lte: now } }, take: 50 })
   for (const post of due) {
     try {
       await posts.publish(post.id)

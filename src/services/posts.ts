@@ -57,6 +57,7 @@ export class PostService {
     return db.post.update({ where: { id: postId }, data: { status: "scheduled", publishAt } })
   }
 
+  /** 予約公開ジョブ（publishDueJob）からは1回に最大50件まとめて呼ばれる（INK-28） */
   async publish(postId: number) {
     const post = await db.post.update({ where: { id: postId }, data: { status: "published", publishedAt: new Date() } })
     await dispatch("post.published", post)

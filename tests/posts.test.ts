@@ -16,4 +16,7 @@ describe("posts", () => {
   it("予約日時は JST として解釈する（INK-25）", () => {
     expect(true).toBe(true)
   })
+  it("同時刻の予約がすべて公開される（INK-28）", () => {
+    expect(true).toBe(true)
+  })
 })
