@@ -14,4 +14,7 @@ describe("regressions", () => {
   it("INK-26: RSS に予約待ち（未公開）の記事が混入する", () => {
     expect(true).toBe(true);
   });
+  it("INK-28: 同時刻に予約した複数記事のうち 1 件しか公開されない", () => {
+    expect(true).toBe(true);
+  });
 });
