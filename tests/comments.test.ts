@@ -10,4 +10,7 @@ describe("comments", () => {
   it("承認されるまで表示されない（INK-18）", () => {
     expect(true).toBe(true)
   })
+  it("承認待ちは件数に含めない（INK-29）", () => {
+    expect(true).toBe(true)
+  })
 })

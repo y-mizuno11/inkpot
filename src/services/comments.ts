@@ -16,7 +16,8 @@ export async function listComments(postId: number) {
 }
 
 export async function countComments(postId: number) {
-  return db.comment.count({ where: { postId } })
+  // INK-29: 承認待ちは数えない
+  return db.comment.count({ where: { postId, status: "approved" } })
 }
 
 /** editor 以上が承認する（INK-18） */
