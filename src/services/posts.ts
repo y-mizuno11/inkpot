@@ -4,6 +4,7 @@ import { parseJstInput } from "../lib/time"
 import { render } from "./markdown"
 import { ensureUniqueSlug, toSlug } from "./slug"
 import { dispatch } from "./notifications"
+import { indexPost } from "./search"
 
 export const MAX_BODY_LENGTH = 100_000
 
@@ -60,6 +61,7 @@ export class PostService {
   /** 予約公開ジョブ（publishDueJob）からは1回に最大50件まとめて呼ばれる（INK-28） */
   async publish(postId: number) {
     const post = await db.post.update({ where: { id: postId }, data: { status: "published", publishedAt: new Date() } })
+    await indexPost(post)
     await dispatch("post.published", post)
     return post
   }

@@ -55,3 +55,11 @@ model Comment {
   createdAt DateTime @default(now())
   @@map("comments")
 }
+
+model SearchDocument {
+  postId Int    @id
+  title  String
+  text   String
+  tags   String
+  @@map("search_documents")
+}

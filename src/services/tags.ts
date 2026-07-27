@@ -4,6 +4,7 @@ import { AppError } from "../lib/errors"
 export const MAX_TAGS = 5
 const RESERVED = new Set(["admin", "draft", "new"])
 
+/** search.ts の indexPost もタグ名をこの関数で正規化して索引に入れる（INK-32） */
 export function normalizeTag(name: string): string {
   // INK-14: 小文字化。INK-27: NFKC で濁点分離と全角を揃える
   const normalized = name.normalize("NFKC").trim().toLowerCase().replace(/\s+/g, "-")
