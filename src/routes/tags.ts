@@ -1,7 +1,7 @@
 import type { Context, Hono } from "hono"
 import { db } from "../lib/db"
 import { AppError } from "../lib/errors"
-import { attachTags, normalizeTag } from "../services/tags"
+import { attachTags, normalizeTag, renameTag } from "../services/tags"
 
 async function handleAttach(c: Context) {
   try {
@@ -20,7 +20,14 @@ export async function filterByTag(c: Context) {
   return c.json(await db.post.findMany({ where: { status: "published", tags: { some: { name: tag } } } }))
 }
 
+async function handleRename(c: Context) {
+  const { from, to } = await c.req.json()
+  await renameTag(from, to)
+  return c.json({ ok: true })
+}
+
 export function registerTagRoutes(app: Hono) {
   app.post("/posts/:id/tags", handleAttach)
   app.get("/posts", filterByTag)
+  app.post("/admin/tags/rename", handleRename)
 }

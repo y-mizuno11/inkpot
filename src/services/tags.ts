@@ -19,3 +19,9 @@ export async function attachTags(postId: number, names: string[]) {
   await db.postTag.deleteMany({ where: { postId } })
   await db.postTag.createMany({ data: tags.map((name) => ({ postId, name })) })
 }
+
+/** タグのリネーム（INK-35、管理画面） */
+export async function renameTag(from: string, to: string) {
+  const [oldName, newName] = [normalizeTag(from), normalizeTag(to)]
+  await db.postTag.updateMany({ where: { name: oldName }, data: { name: newName } })
+}
