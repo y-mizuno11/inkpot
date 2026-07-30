@@ -25,7 +25,7 @@ export class PostService {
   async create(authorId: number, input: { title: string; body: string }) {
     if (input.body.length > MAX_BODY_LENGTH) throw new AppError("E1004")
     const slug = await ensureUniqueSlug(toSlug(input.title, Date.now()))
-    return db.post.create({ data: { ...input, slug, authorId, status: "draft" } })
+    return db.post.create({ data: { ...input, slug, authorId, status: "draft", rendererVersion: 2 } })
   }
 
   async update(postId: number, input: { title?: string; body?: string }) {

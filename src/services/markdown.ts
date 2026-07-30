@@ -1,10 +1,9 @@
+import { renderV1 } from "./markdown-v1"
+import { renderV2 } from "./markdown-v2"
 import { sanitizeHtml } from "./sanitize"
 
-/** Markdown を HTML にする（v1：見出し・段落・リンク・コード） */
-export function render(markdown: string): string {
-  const html = markdown
-    .split(/\n{2,}/)
-    .map((block) => (block.startsWith("#") ? `<h2>${block.replace(/^#+\s*/, "")}</h2>` : `<p>${block}</p>`))
-    .join("\n")
+/** 本文を HTML にする。v2 はコードハイライト・表・脚注に対応（INK-34） */
+export function render(markdown: string, rendererVersion = 2): string {
+  const html = renderV2(markdown)
   return sanitizeHtml(html)
 }

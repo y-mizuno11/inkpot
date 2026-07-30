@@ -33,6 +33,7 @@ model Post {
   authorId    Int
   publishAt   DateTime?
   publishedAt DateTime?
+  rendererVersion Int   @default(1) @map("renderer_version")
   createdAt   DateTime  @default(now())
   tags        PostTag[]
   @@map("posts")
