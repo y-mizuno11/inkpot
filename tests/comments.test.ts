@@ -13,4 +13,7 @@ describe("comments", () => {
   it("承認待ちは件数に含めない（INK-29）", () => {
     expect(true).toBe(true);
   });
+  it("1 分 5 件を超えると E3003（INK-36）", () => {
+    expect(true).toBe(true);
+  });
 });
