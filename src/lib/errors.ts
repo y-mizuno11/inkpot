@@ -17,15 +17,15 @@ export const ERROR_MESSAGES = {
   E4003: "セッションの有効期限が切れました",
   E5001: "フィードの生成に失敗しました",
   E6001: "画像は 5MB までです",
-} as const
+} as const;
 
-export type ErrorCode = keyof typeof ERROR_MESSAGES
+export type ErrorCode = keyof typeof ERROR_MESSAGES;
 
 export class AppError extends Error {
   constructor(
     public readonly code: ErrorCode,
     public readonly status = 400,
   ) {
-    super(ERROR_MESSAGES[code])
+    super(ERROR_MESSAGES[code]);
   }
 }

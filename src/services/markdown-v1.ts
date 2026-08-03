@@ -3,5 +3,5 @@ export function renderV1(markdown: string): string {
   return markdown
     .split(/\n{2,}/)
     .map((block) => (block.startsWith("#") ? `<h2>${block.replace(/^#+\s*/, "")}</h2>` : `<p>${block}</p>`))
-    .join("\n")
+    .join("\n");
 }

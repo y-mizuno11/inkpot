@@ -1,16 +1,16 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it } from "vitest";
 
 describe("comments", () => {
   it("ログインしないとコメントできない（INK-11）", () => {
-    expect(true).toBe(true)
-  })
+    expect(true).toBe(true);
+  });
   it("script タグを除去する（INK-15）", () => {
-    expect(true).toBe(true)
-  })
+    expect(true).toBe(true);
+  });
   it("承認されるまで表示されない（INK-18）", () => {
-    expect(true).toBe(true)
-  })
+    expect(true).toBe(true);
+  });
   it("承認待ちは件数に含めない（INK-29）", () => {
-    expect(true).toBe(true)
-  })
-})
+    expect(true).toBe(true);
+  });
+});

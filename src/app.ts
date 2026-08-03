@@ -1,16 +1,16 @@
-import { Hono } from "hono"
-import { registerAuthRoutes } from "./routes/auth"
-import { registerPostRoutes } from "./routes/posts"
-import { registerTagRoutes } from "./routes/tags"
-import { registerCommentRoutes } from "./routes/comments"
-import { registerFeedRoutes } from "./routes/feed"
-import { registerSearchRoutes } from "./routes/search"
+import { Hono } from "hono";
+import { registerAuthRoutes } from "./routes/auth";
+import { registerPostRoutes } from "./routes/posts";
+import { registerTagRoutes } from "./routes/tags";
+import { registerCommentRoutes } from "./routes/comments";
+import { registerFeedRoutes } from "./routes/feed";
+import { registerSearchRoutes } from "./routes/search";
 
-export const app = new Hono()
+export const app = new Hono();
 
-registerAuthRoutes(app)
-registerPostRoutes(app)
-registerTagRoutes(app)
-registerCommentRoutes(app)
-registerFeedRoutes(app)
-registerSearchRoutes(app)
+registerAuthRoutes(app);
+registerPostRoutes(app);
+registerTagRoutes(app);
+registerCommentRoutes(app);
+registerFeedRoutes(app);
+registerSearchRoutes(app);
