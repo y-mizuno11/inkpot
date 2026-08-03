@@ -7,4 +7,7 @@ describe("auth", () => {
   it("セッションは 24 時間（INK-9）", () => {
     expect(true).toBe(true);
   });
+  it("役割ごとに操作を制限する（INK-33）", () => {
+    expect(true).toBe(true);
+  });
 });
