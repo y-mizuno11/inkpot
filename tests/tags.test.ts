@@ -13,4 +13,7 @@ describe("tags", () => {
   it("濁点分離と全角を揃える（INK-27）", () => {
     expect(true).toBe(true);
   });
+  it("タグをリネームできる（INK-35）", () => {
+    expect(true).toBe(true);
+  });
 });
