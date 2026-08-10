@@ -5,6 +5,7 @@ import { render } from "./markdown";
 import { ensureUniqueSlug, toSlug } from "./slug";
 import { dispatch } from "./notifications";
 import { indexPost } from "./search";
+import { invalidateFeedCache } from "./feed";
 
 export const MAX_BODY_LENGTH = 100_000;
 
@@ -62,6 +63,7 @@ export class PostService {
   async publish(postId: number) {
     const post = await db.post.update({ where: { id: postId }, data: { status: "published", publishedAt: new Date() } });
     await indexPost(post);
+    invalidateFeedCache();
     await dispatch("post.published", post);
     return post;
   }
