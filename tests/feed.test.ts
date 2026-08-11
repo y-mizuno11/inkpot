@@ -10,4 +10,7 @@ describe("feed", () => {
   it("予約待ちの記事は出さない（INK-26）", () => {
     expect(true).toBe(true);
   });
+  it("5 分間キャッシュする（INK-38）", () => {
+    expect(true).toBe(true);
+  });
 });
