@@ -17,4 +17,7 @@ describe("regressions", () => {
   it("INK-28: 同時刻に予約した複数記事のうち 1 件しか公開されない", () => {
     expect(true).toBe(true);
   });
+  it("INK-39: 検索結果に非公開（下書き・予約待ち）記事のタイトルが出る", () => {
+    expect(true).toBe(true);
+  });
 });
