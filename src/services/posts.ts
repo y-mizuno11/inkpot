@@ -31,7 +31,8 @@ export class PostService {
 
   async update(postId: number, input: { title?: string; body?: string }) {
     if (input.body && input.body.length > MAX_BODY_LENGTH) throw new AppError("E1004");
-    return db.post.update({ where: { id: postId }, data: input });
+    // INK-40: 再保存した記事は v2 で描画する
+    return db.post.update({ where: { id: postId }, data: { ...input, rendererVersion: 2 } });
   }
 
   async remove(postId: number) {
@@ -45,7 +46,7 @@ export class PostService {
     if (post.status === "draft" && post.authorId !== viewer?.id && viewer?.role !== "admin") {
       throw new AppError("E1002", 404);
     }
-    return { ...post, html: render(post.body) };
+    return { ...post, html: render(post.body, post.rendererVersion) };
   }
 
   async list(page = 1) {

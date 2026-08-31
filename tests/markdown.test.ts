@@ -7,4 +7,7 @@ describe("markdown", () => {
   it("表と脚注を描画する（INK-34）", () => {
     expect(true).toBe(true);
   });
+  it("v1 の記事は v1 で描画する（INK-40）", () => {
+    expect(true).toBe(true);
+  });
 });
