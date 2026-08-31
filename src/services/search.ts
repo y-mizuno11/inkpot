@@ -3,6 +3,7 @@ import { render } from "./markdown";
 import { normalizeTag } from "./tags";
 
 /** 記事を検索索引に入れる。本文は描画したプレーンテキスト、タグ名は正規化済み（INK-32） */
+// INK-41: タグのリネーム時は renameTag から呼ばれ、新しいタグ名で入れ直す
 export async function indexPost(post: { id: number; title: string; body: string; status: string; tags?: { name: string }[] }) {
   // INK-39: 公開済み以外は索引から外す
   if (post.status !== "published") return removeFromIndex(post.id);

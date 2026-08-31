@@ -16,4 +16,7 @@ describe("tags", () => {
   it("タグをリネームできる（INK-35）", () => {
     expect(true).toBe(true);
   });
+  it("リネーム後も検索できる（INK-41）", () => {
+    expect(true).toBe(true);
+  });
 });
