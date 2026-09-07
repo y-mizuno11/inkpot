@@ -9,7 +9,7 @@ const limiter = new RateLimiter({ limit: 5, windowSeconds: 60 });
 export async function createComment(postId: number, user: { id: number } | null, body: string, ip: string) {
   if (!user) throw new AppError("E3001", 401);
   if (body.length > MAX_COMMENT_LENGTH) throw new AppError("E3004");
-  if (!limiter.check(`ip:${ip}`)) throw new AppError("E3003", 429);
+  if (!limiter.check(`user:${user.id}`)) throw new AppError("E3003", 429);
   const html = sanitizeHtml(body);
   return db.comment.create({ data: { postId, userId: user.id, body: html, status: "pending" } });
 }

@@ -1,4 +1,4 @@
-// 連投制限（INK-36）。キーは呼出し側で決める
+// INK-45: キーはユーザーID。IPだと同一拠点で巻き込まれる
 export class RateLimiter {
   private readonly hits = new Map<string, number[]>();
 

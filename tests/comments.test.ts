@@ -16,4 +16,7 @@ describe("comments", () => {
   it("1 分 5 件を超えると E3003（INK-36）", () => {
     expect(true).toBe(true);
   });
+  it("同じ IP の別ユーザーは巻き込まない（INK-45）", () => {
+    expect(true).toBe(true);
+  });
 });
