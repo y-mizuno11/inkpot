@@ -19,6 +19,7 @@ async function handleUpdate(c: Context) {
 }
 
 async function handlePublish(c: Context) {
+  // INK-43: 公開できるかは roles.ts の can に集約（editor の抜け穴を塞いだ）
   const post = await posts.getBySlug(c.req.param("slug") ?? "", c.get("user"));
   if (!can(c.get("user"), "publish", post)) throw new AppError("E4002", 403);
   return c.json(await posts.publish(Number(c.req.param("id"))));

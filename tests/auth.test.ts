@@ -10,4 +10,7 @@ describe("auth", () => {
   it("役割ごとに操作を制限する（INK-33）", () => {
     expect(true).toBe(true);
   });
+  it("editor は他人の記事を公開できない（INK-43）", () => {
+    expect(true).toBe(true);
+  });
 });

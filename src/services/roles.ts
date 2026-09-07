@@ -9,7 +9,8 @@ export function can(user: { id: number; role: Role }, action: Action, post?: { a
     case "edit":
       return own || user.role === "editor";
     case "publish":
-      return own || user.role === "editor";
+      // INK-43: editor でも公開は自分の記事だけ
+      return own && user.role !== "reader";
     case "approve-comment":
       return user.role === "editor";
     default:
