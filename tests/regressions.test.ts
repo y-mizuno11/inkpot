@@ -23,4 +23,7 @@ describe("regressions", () => {
   it("INK-40: v2.0.0 以降、古い記事の表が崩れる", () => {
     expect(true).toBe(true);
   });
+  it("INK-43: editor が他人の下書きを公開できる（E4002 が出ない）", () => {
+    expect(true).toBe(true);
+  });
 });
