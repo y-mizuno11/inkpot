@@ -1,5 +1,6 @@
-/** 読了時間（分）。英語の単語数 ÷ 200 */
+// INK-44: 日本語は単語区切りが無いため文字数で数える（1 分 500 字）
 export function estimateReadingTime(body: string): number {
-  const words = body.split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.round(words / 200));
+  const japanese = (body.match(/[\u3040-\u30ff\u4e00-\u9fff]/g) ?? []).length;
+  const words = body.replace(/[\u3040-\u30ff\u4e00-\u9fff]/g, " ").split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(japanese / 500 + words / 200));
 }
