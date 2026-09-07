@@ -1,6 +1,7 @@
 import { db } from "../lib/db";
 import { AppError } from "../lib/errors";
 import { indexPost } from "./search";
+import { invalidateFeedCache } from "./feed";
 
 export const MAX_TAGS = 5;
 const RESERVED = new Set(["admin", "draft", "new"]);
@@ -28,4 +29,5 @@ export async function renameTag(from: string, to: string) {
   // INK-41: 検索索引のタグ名も付け替える
   const posts = await db.post.findMany({ where: { tags: { some: { name: newName } } } });
   for (const post of posts) await indexPost(post);
+  invalidateFeedCache();
 }

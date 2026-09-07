@@ -20,7 +20,7 @@ export async function buildRss(siteUrl: string): Promise<string> {
   return xml;
 }
 
-/** 記事の公開で呼ぶ（INK-38） */
+/** 記事の公開（INK-38）とタグのリネーム（INK-42）で呼ぶ */
 export function invalidateFeedCache() {
   cache = null;
 }
