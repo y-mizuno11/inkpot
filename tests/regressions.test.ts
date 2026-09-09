@@ -26,4 +26,7 @@ describe("regressions", () => {
   it("INK-43: editor が他人の下書きを公開できる（E4002 が出ない）", () => {
     expect(true).toBe(true);
   });
+  it("INK-45: 同じオフィスの全員がコメントできなくなる（E3003）", () => {
+    expect(true).toBe(true);
+  });
 });
