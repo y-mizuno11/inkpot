@@ -64,3 +64,10 @@ model SearchDocument {
   tags   String
   @@map("search_documents")
 }
+
+model NotificationLog {
+  key       String   @id
+  event     String
+  createdAt DateTime @default(now())
+  @@map("notification_log")
+}

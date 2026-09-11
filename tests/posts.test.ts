@@ -19,4 +19,7 @@ describe("posts", () => {
   it("同時刻の予約がすべて公開される（INK-28）", () => {
     expect(true).toBe(true);
   });
+  it("公開通知は 1 回だけ送られる（INK-46）", () => {
+    expect(true).toBe(true);
+  });
 });

@@ -65,7 +65,7 @@ export class PostService {
     const post = await db.post.update({ where: { id: postId }, data: { status: "published", publishedAt: new Date() } });
     await indexPost(post);
     invalidateFeedCache();
-    await dispatch("post.published", post);
+    await dispatch("post.published", post, `post.published:${post.id}`);
     return post;
   }
 }
