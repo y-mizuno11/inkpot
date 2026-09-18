@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 import { sendMail } from "../../lib/mail";
 
 export async function send(event: string, payload: { title: string; slug: string }) {

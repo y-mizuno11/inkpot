@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 export type Role = "admin" | "editor" | "author" | "reader";
 export type Action = "edit" | "publish" | "approve-comment" | "manage-tags";
 

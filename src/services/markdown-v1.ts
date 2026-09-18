@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 /** 旧レンダラ（v1）。renderer_version = 1 の記事が約 120 件残っているため削除しない（INK-40） */
 export function renderV1(markdown: string): string {
   return markdown

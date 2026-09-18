@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 export async function send(event: string, payload: { title: string; slug: string }) {
   const url = process.env.NOTIFY_SLACK_WEBHOOK;
   if (!url) return;

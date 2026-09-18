@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 import { describe, expect, it } from "vitest";
 
 describe("tags", () => {

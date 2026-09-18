@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 import { db } from "../lib/db";
 import { nowJst } from "../lib/time";
 import { alertOps } from "../lib/alert";

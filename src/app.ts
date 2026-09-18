@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 import { Hono } from "hono";
 import { registerAuthRoutes } from "./routes/auth";
 import { registerPostRoutes } from "./routes/posts";

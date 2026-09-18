@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 // INK-25: 入力はJST。UTC解釈で9時間早く公開された事故の再発防止
 // 日時は必ずこのファイルの関数を通す（new Date(入力値) を直接使わない）
 const JST_OFFSET_MINUTES = 9 * 60;

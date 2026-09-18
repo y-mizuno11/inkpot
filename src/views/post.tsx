@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 import { estimateReadingTime } from "../services/reading-time";
 
 export function PostView({ post }: { post: { title: string; body: string; html?: string } }) {

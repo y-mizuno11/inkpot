@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 // エラーコード体系（INK-6）。利用者に表示し、問い合わせはこのコードで来る
 export const ERROR_MESSAGES = {
   E1001: "記事が見つかりません",

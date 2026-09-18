@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 import { renderV1 } from "./markdown-v1";
 import { renderV2 } from "./markdown-v2";
 import { sanitizeHtml } from "./sanitize";

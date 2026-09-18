@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 // INK-45: キーはユーザーID。IPだと同一拠点で巻き込まれる
 export class RateLimiter {
   private readonly hits = new Map<string, number[]>();

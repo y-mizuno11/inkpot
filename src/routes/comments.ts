@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 import type { Context, Hono } from "hono";
 import { createComment, listComments, approveComment } from "../services/comments";
 

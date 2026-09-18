@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 import { db } from "../lib/db";
 import { PostRepository } from "./posts";
 import { estimateReadingTime } from "./reading-time";

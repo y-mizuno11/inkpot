@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2026 Inkpot contributors
+
 import { config } from "../config";
 import { AppError } from "../lib/errors";
 import { putObject } from "../lib/s3";
