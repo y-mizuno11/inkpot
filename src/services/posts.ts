@@ -71,4 +71,9 @@ export class PostService {
     await dispatch("post.published", post, `post.published:${post.id}`);
     return post;
   }
+
+  /** INK-47: 一覧に「公開予定」として出す予約記事 */
+  async listUpcoming() {
+    return db.post.findMany({ where: { status: "scheduled" }, orderBy: { publishAt: "asc" }, take: 10 });
+  }
 }
