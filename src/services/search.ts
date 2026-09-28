@@ -4,6 +4,7 @@
 import { db } from "../lib/db";
 import { render } from "./markdown";
 import { normalizeTag } from "./tags";
+import { expandSynonyms } from "./synonyms";
 
 /** 記事を検索索引に入れる。本文は描画したプレーンテキスト、タグ名は正規化済み（INK-32） */
 // INK-41: タグのリネーム時は renameTag から呼ばれ、新しいタグ名で入れ直す
@@ -24,7 +25,7 @@ export async function removeFromIndex(postId: number) {
 }
 
 export async function searchPosts(query: string) {
-  const terms = [query];
+  const terms = expandSynonyms(query);
   return db.searchDocument.findMany({
     where: { OR: terms.flatMap((q) => [{ title: { contains: q } }, { text: { contains: q } }, { tags: { contains: q } }]) },
     take: 20,
