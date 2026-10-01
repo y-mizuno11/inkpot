@@ -11,6 +11,7 @@ export async function login(email: string, password: string) {
   if (!user || !(await verifyPassword(password, user.passwordHash))) {
     throw new AppError("E4001", 401);
   }
+  if (!user.emailVerifiedAt) throw new AppError("E4004", 403);
   return createSession(user.id);
 }
 
